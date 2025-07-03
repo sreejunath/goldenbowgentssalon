@@ -107,6 +107,8 @@
             background-color: var(--service-bg);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            text-align: center;
+            margin-bottom: 30px;
         }
         .service:hover {
             transform: translateY(-5px);
@@ -199,6 +201,20 @@
         }
         .contact-info p:last-child {
             margin-bottom: 0;
+        }
+        .avatar {
+        width: 50px;
+        height: 50px;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        font-family: 'Poppins', sans-serif;
         }
 
 
@@ -294,24 +310,27 @@
     </section>
 
     <section id="reviews">
-        <h2>Customer Reviews</h2>
-        <div class="services">
-            <div class="service">
-                <p><strong>Ali K.</strong></p>
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>“Amazing experience! Very friendly staff and excellent haircut.”</p>
-            </div>
-            <div class="service">
-                <p><strong>Ramesh D.</strong></p>
-                <p>⭐⭐⭐⭐</p>
-                <p>“Good ambience, quick service. Will visit again.”</p>
-            </div>
-            <div class="service">
-                <p><strong>Hassan M.</strong></p>
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>“Highly professional team. The golden facial is a must-try!”</p>
-            </div>
+    <h2>Customer Reviews</h2>
+    <div class="services">
+        <div class="service">
+            <div class="avatar">AK</div>
+            <p><strong>Ali K.</strong></p>
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>“Amazing experience! Very friendly staff and excellent haircut.”</p>
         </div>
+        <div class="service">
+            <div class="avatar">RD</div>
+            <p><strong>Ramesh D.</strong></p>
+            <p>⭐⭐⭐⭐</p>
+            <p>“Good ambience, quick service. Will visit again.”</p>
+        </div>
+        <div class="service">
+            <div class="avatar">HM</div>
+            <p><strong>Hassan M.</strong></p>
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>“Highly professional team. The golden facial is a must-try!”</p>
+        </div>
+    </div>
     </section>
 
     <section id="map">
