@@ -71,7 +71,7 @@
             background: none;
             border: 1px solid var(--header-text);
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.5rem; /* Larger font size for emoji */
             color: var(--header-text);
             padding: 0.5rem;
             border-radius: 5px;
@@ -80,11 +80,6 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-        }
-        .toggle-theme svg {
-            fill: currentColor;
-            width: 22px;
-            height: 22px;
         }
         .toggle-theme:hover {
             background-color: var(--header-text);
@@ -141,10 +136,13 @@
         }
         .slider {
             width: 100%;
-            height: 70vh;
+            /* Adjusted height to prevent being hidden behind header */
+            height: 70vh; 
             max-height: 500px;
             overflow: hidden;
             position: relative;
+            /* Added padding-top to ensure content below header is visible */
+            padding-top: 60px; /* Adjust based on your header's actual height if needed */
         }
         .slider img {
             width: 100%;
@@ -195,15 +193,25 @@
         .lightbox.active {
             display: flex;
         }
+        /* Style for removing bullets from contact section */
+        .contact-info p {
+            margin-bottom: 0.5rem; /* Add some spacing between lines */
+        }
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
+
 
         @media (max-width: 768px) {
             .services { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-            .slider { height: 50vh; }
+            .slider { height: 50vh; padding-top: 0; } /* Remove padding-top for mobile if header is no longer sticky or fixed */
+            header { position: static; /* Make header static on smaller screens */ }
         }
         @media (max-width: 480px) {
             header h1 { font-size: 1.5rem; }
             .services { grid-template-columns: 1fr; }
-            .slider { height: 40vh; }
+            .slider { height: 40vh; padding-top: 0; } /* Remove padding-top for mobile if header is no longer sticky or fixed */
+            header { position: static; /* Make header static on smaller screens */ }
         }
     </style>
 </head>
@@ -219,21 +227,20 @@
             <a href="#map">Location</a>
         </nav>
         <button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle theme">
-            <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-            </svg>
+            <span id="theme-icon">🌙</span>
         </button>
     </header>
 
     <section class="slider">
-        <img src="https://source.unsplash.com/1200x500/?salon,barber" class="slide active" />
-        <img src="https://source.unsplash.com/1200x500/?haircut,shop" class="slide" />
-        <img src="https://source.unsplash.com/1200x500/?grooming,shave" class="slide" />
+        <img src="asset/f1redesigned.png" class="slide active" alt="Interior of Golden Bow Gents Salon, a modern and clean space for grooming." />
+        <img src="asset/f2.jpeg" class="slide" alt="Barber giving a haircut at Golden Bow Gents Salon." />
+        <img src="asset/f3.jpeg" class="slide" alt="Golden Bow Gents Salon reception area with comfortable seating." />
     </section>
 
     <section id="about">
         <h2>About Us</h2>
-        <p>Located in the heart of Sharjah - Abu Shagara, Golden Bow Gents Salon offers a wide range of grooming services with professional care and comfort. We pride ourselves on hygiene, quality, and customer satisfaction.</p>
+        <p>Located in the heart of Sharjah - Abu Shagara, Golden Bow Gents Salon offers a wide range of grooming services with professional care and comfort. We pride ourselves on hygiene, quality, and customer satisfaction. </p>
+        <p>Our team of experienced barbers and stylists are dedicated to providing a personalized grooming experience for every client. From classic haircuts and precise shaves to relaxing head massages and rejuvenating facials, we use only high-quality products to ensure you look and feel your best. Walk in or book an appointment for a premium salon experience designed for the modern gentleman.</p>
     </section>
 
     <section id="services">
@@ -264,21 +271,23 @@
     <section id="gallery">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-            <img src="https://source.unsplash.com/600x400/?salon,1" alt="Gallery 1">
-            <img src="https://source.unsplash.com/600x400/?salon,2" alt="Gallery 2">
-            <img src="https://source.unsplash.com/600x400/?salon,3" alt="Gallery 3">
-            <img src="https://source.unsplash.com/600x400/?salon,4" alt="Gallery 4">
-            <img src="https://source.unsplash.com/600x400/?salon,5" alt="Gallery 5">
+            <img src="asset/img1.jpeg" alt="Salon interior view 1, clean and well-lit." onclick="openLightbox(this.src, this.alt)">
+            <img src="asset/img2.jpeg" alt="Salon interior view 2, showing barber chairs." onclick="openLightbox(this.src, this.alt)">
+            <img src="asset/img3.jpeg" alt="Close-up of grooming tools on a clean station." onclick="openLightbox(this.src, this.alt)">
+            <img src="asset/img4.jpeg" alt="Client receiving a beard trim." onclick="openLightbox(this.src, this.alt)">
+            <img src="asset/img5.jpeg" alt="Stylish haircut being finished by a barber." onclick="openLightbox(this.src, this.alt)">
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact Us</h2>
-        <p><strong>Timings:</strong> Morning 8:00 AM to 11:30 PM</p>
-        <p><strong>Landline:</strong> 065354416</p>
-        <p><strong>Mobile:</strong> 0581055447</p>
-        <p><strong>Email:</strong> goldenbowgentssaloon@gmail.com</p>
-        <p><strong>Address:</strong> SHARJHA, ABU SHAGARA</p>
+        <div class="contact-info">
+            <p><strong>Timings:</strong> Morning 8:00 AM to 11:30 PM</p>
+            <p><strong>Landline:</strong> 065354416</p>
+            <p><strong>Mobile:</strong> 0581055447</p>
+            <p><strong>Email:</strong> <a href="mailto:goldenbowgentssaloon@gmail.com">goldenbowgentssaloon@gmail.com</a></p>
+            <p><strong>Address:</strong> SHARJHA, ABU SHAGARA, Behind "DAY TO DAY" hyper market</p>
+        </div>
         <div style="text-align: center;">
             <a class="button" href="https://wa.me/971581055447?text=Hi%20Golden%20Bow%20Salon%2C%20I%20have%20a%20service%20inquiry" target="_blank">Message on WhatsApp</a>
         </div>
@@ -307,17 +316,17 @@
 
     <section id="map">
         <h2>Find Us</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/place/25%C2%B020'10.6%22N+55%C2%B023'33.7%22E/@25.3362892,55.3901218,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.3362892!4d55.3926967?hl=en&entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div style="text-align: center; margin-top: 1rem;">
-            <a class="button" href="https://www.google.com/maps/search/Golden+Bow+Gents+Salon+Sharjah+Abu+Shagara" target="_blank">Open in Google Maps</a>
+            <a class="button" href="http://googleusercontent.com/maps.google.com/6" target="_blank">Open in Google Maps</a>
         </div>
     </section>
 
     <footer>
         <p>© 2025 GOLDEN BOW GENTS SALON. All Rights Reserved.</p>
+        <p>Designed by <a href="http://voxora.in" style="color: var(--header-text); text-decoration: none;">voxora.in</a></p>
     </footer>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <img src="" alt="Lightbox Image" id="lightbox-img">
     </div>
@@ -327,15 +336,18 @@
             document.body.classList.toggle("dark-mode");
             const themeIcon = document.getElementById("theme-icon");
             if (document.body.classList.contains("dark-mode")) {
-                themeIcon.innerHTML = `<path d="M12 4.5a1 1 0 011 1v1.5a1 1 0 01-2 0v-1.5a1 1 0 011-1zM12 17.5a1 1 0 011 1v1.5a1 1 0 01-2 0v-1.5a1 1 0 011-1zM4.5 12a1 1 0 011-1h1.5a1 1 0 010 2H5.5a1 1 0 01-1-1zm13.5 0a1 1 0 011-1h1.5a1 1 0 010 2H19a1 1 0 01-1-1zM7.76 7.76a1 1 0 011.42 0l1.06 1.06a1 1 0 01-1.42 1.42L7.76 9.18a1 1 0 010-1.42zm8.48 8.48a1 1 0 011.42 0l1.06 1.06a1 1 0 01-1.42 1.42l-1.06-1.06a1 1 0 010-1.42zM7.76 16.24a1 1 0 010 1.42l-1.06 1.06a1 1 0 01-1.42-1.42l1.06-1.06a1 1 0 011.42 0zm8.48-8.48a1 1 0 010 1.42l-1.06 1.06a1 1 0 01-1.42-1.42l1.06-1.06a1 1 0 011.42 0zM12 8a4 4 0 100 8 4 4 0 000-8z"/>`;
+                themeIcon.textContent = "☀️"; // Sun emoji for dark mode
             } else {
-                themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>`;
+                themeIcon.textContent = "🌙"; // Moon emoji for light mode
             }
         }
 
         // Slider
         let currentIndex = 0;
         const slides = document.querySelectorAll(".slider img");
+        // Ensure the first slide is active on load
+        slides[0].classList.add("active"); 
+
         setInterval(() => {
             slides[currentIndex].classList.remove("active");
             currentIndex = (currentIndex + 1) % slides.length;
@@ -350,6 +362,7 @@
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
                 lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt; // Pass alt text to lightbox
                 lightbox.classList.add('active');
             });
         });
@@ -357,6 +370,13 @@
         lightbox.addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
+
+        // Function to open lightbox, if needed from outside click handler
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.add('active');
+        }
     </script>
 </body>
 </html>
